@@ -1,2 +1,2 @@
 # project-b-tacit-KG //
-# Project B main page. 
+Project B main page. 
