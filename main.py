@@ -1,21 +1,38 @@
 from typing import Union
-
+import atexit
 from fastapi import FastAPI
-
+from fastapi.middleware.cors import CORSMiddleware
 from neo4j import GraphDatabase
 
 app = FastAPI()
 
-# URI examples: "neo4j://localhost", "neo4j+s://xxx.databases.neo4j.io"
-URI = "neo4j+s://7d002c1b.databases.neo4j.io"
-AUTH = ("neo4j", "ro3_6PfNiAyAaP1F38q7hB0o23Xy8jweDEPlhoZAMu4")
+origins = ["*"]
 
-with GraphDatabase.driver(URI, auth=AUTH) as driver:
-    driver.verify_connectivity()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
-# Establish driver, session
-driver = GraphDatabase.driver(URI, auth=AUTH)
-session = driver.session(database="neo4j")
+class GraphDB:
+
+    def __init__(self):
+        # Neo4j URI, username, password
+        uri = "neo4j+s://7d002c1b.databases.neo4j.io"
+        user = "neo4j"
+        password = "ro3_6PfNiAyAaP1F38q7hB0o23Xy8jweDEPlhoZAMu4"
+        # Connect to Neo4j GDB
+        self.driver = GraphDatabase.driver(uri, auth=(user, password))
+        print("Neo4j GDB address:", self.driver.get_server_info().address)
+    
+    def close(self):
+        self.driver.close()
+
+GDB = GraphDB()
+session = GDB.driver.session(database="neo4j")
+
 
 @app.get("/")
 def read_root():
@@ -23,19 +40,16 @@ def read_root():
 
 @app.get("/nodes")
 async def read_nodes():
-    records = session.run("""
-    MATCH (p)
-    RETURN p.name AS name
-    """
-    )
-    print(records)
-    return "success"
+    # The cypher query
+    def get_nodes_name(ss):
+        result = ss.run("""
+            MATCH (p) 
+            RETURN p.name as name;
+            """)
+        return list[result]
+    return session.execute_read(get_nodes_name)
+    
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
-
-# session/driver usage
-
-session.close()
-driver.close()
