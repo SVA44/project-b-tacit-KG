@@ -1,8 +1,9 @@
 # project-b-tacit-KG 
 Project B main page. <br/>
 The project pipeline: Interview Transcipts/Discussions -> Sentence synthesizing/labelling -> Translate into Cypher Query -> Set up KGs in Neo4j -> Show in frontend <br/>
-Current plan: Manually separate sentences using a sample data source, then translate into Cypher queries. Automate the process using Mistral 7B and FastAPI <br/>
+Current plan: Manually separate sentences using a sample data source, then translate into Cypher queries. Compare to manually extracting data using Mistral 24B, ChatGPT and DeepSeek<br/>
 Mistral 7B full chat: https://chat.mistral.ai/chat/95f72a3d-8ad7-47a3-9d35-39233406e846 <br/>
+Facts and Relationships Extraction using LLMs: <br/>
 ChatGPT full chat: https://chatgpt.com/c/68d6135b-3688-8323-ad9f-8c6e53076dfa <br/>
 Mistral 24B full chat: https://chat.mistral.ai/chat/1418cb7b-8726-4256-be41-d592ea34a1fc <br/>
 DeepSeek full chat: https://chat.deepseek.com/a/chat/s/50765af3-e2b1-41c6-a74f-26358db70b4e <br/>
