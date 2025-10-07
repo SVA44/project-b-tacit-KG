@@ -1,9 +1,13 @@
 from typing import Union
 import atexit
-from fastapi import FastAPI
+from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from neo4j import GraphDatabase
+import requests
+import os
 
+MISTRAL_API_KEY = "Bim7zMxmJSVKzmjXPUmlOq3FIkLMfXbj"
 
 app = FastAPI()
 
@@ -17,6 +21,34 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+# Establish connection to Mistral 7B
+class PromptRequest(BaseModel):
+    prompt: str
+
+# Send request to Mistral 7B
+@app.post("/generate_text/")
+async def generate_text(request: PromptRequest):
+    headers = {
+        "Authorization": f"Bearer {MISTRAL_API_KEY}",
+        "Content-type": "application/json",
+    }
+    payload = {
+        "model": "mistral-tiny", 
+        "messages": [{"role":"user", "content": request.prompt}],
+        "temperature": 0.7,
+        "max_tokens": 200,
+    }
+    try:
+        # Connect to Mistral 7B
+        response = requests.post("https://api.mistral.ai/v1/chat/completions", headers=headers, json=payload)
+        response.raise_for_status() # Raise an exception for HTTP errors
+        generate_text = response.json()["choice"][0]["message"]["content"]
+        return {"response": generate_text}
+    except requests.exceptions.RequestException as e:
+        raise HTTPException(status_code=500, detail=f"Error communicating with Mistral API: {e}")
+
+
+# Establish connection to Neo4j GDB
 class GraphDB:
 
     def __init__(self):
