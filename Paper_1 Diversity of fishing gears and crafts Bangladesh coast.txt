@@ -1,0 +1,91 @@
+// Create nodes for fishing crafts
+CREATE (wooden_fishing_vessel:FishingCraft {name: 'Wooden Fishing Vessel', size: 'Length 11-18 m, Width 3-4 m, Depth 2-3 m', bottom_shape_type: 'Rounded, Advance motorized', engine_power: '20-45 HP', carrying_capacity: '10-15 tons', manpower: '10-20', CPUE: '2-4 seabass/haul/day', lifespan: '10-12 years', gear_used: 'Gill net, SBN, Purse seine'})
+CREATE (balam_boat:FishingCraft {name: 'Balam boat', size: 'Length 10-15 m, Width 3-4 m, Depth 2-3 m', bottom_shape_type: 'Rounded, Mechanized', engine_power: '22-45 HP', carrying_capacity: '10 tons', manpower: '8-10', CPUE: '1-3 seabass/haul/day', lifespan: '8-10 years', gear_used: 'Gill net, Drift net, Long line'})
+CREATE (sampan:FishingCraft {name: 'Crescent shape Sampan', size: 'Length 8-10 m, Width 2-2.5 m, Depth 1-2 m', bottom_shape_type: 'Rounded, Mechanized', engine_power: '20-36 HP', manpower: '8-10', CPUE: '1-2 seabass/haul/day', lifespan: '8-10 years', gear_used: 'Seine net, Gillnet'})
+CREATE (motorized_dingi:FishingCraft {name: 'Dingi nauka (motorized)', size: 'Length 5-6 m, Width 2-2.5 m, Depth 1 m', bottom_shape_type: 'Rounded, Mechanized', engine_power: '18-20 HP', manpower: '6-8', CPUE: '2-6 juvenile seabass/haul/day', lifespan: '7-8 years', gear_used: 'Seine net, ESBN'})
+CREATE (non_motorized_dingi:FishingCraft {name: 'Dingi nauka (non-motorized)', size: 'Length 6-7 m, Width 1.5-2 m, Depth 1 m', bottom_shape_type: 'Rounded, Non-mechanized', manpower: '1-2', CPUE: '3-4 seabass/day', lifespan: '5-6 years', gear_used: 'Hook & line, Stake net'})
+CREATE (kosha_nauka:FishingCraft {name: 'Kosha nauka', size: 'Length 6-7 m, Width 1.5-2 m, Depth 1 m', bottom_shape_type: 'Flat, Primitive', manpower: '1-2', CPUE: '1-2 seabass/day', lifespan: '4-5 years', gear_used: 'Hook & line, ESBN'})
+
+// Create nodes for fishing gears
+CREATE (koral_jal:FishingGear {name: 'Gill net (Koral jal)', type_shape: 'Selective, Rectangular', size: 'Length 200-500 m, Width 6-7 m', mesh_size: '15 cm (9/3 nylon), 21 cm (45/3 nylon thread)', cost: '1,50,000-1,80,000 BDT', lifespan: '8-10 years', num_fishers: '8-10', target_fish: 'Asian seabass', fish_size_season: 'Adult, March to May'})
+CREATE (tana_ber_jal:FishingGear {name: 'Shore seine (Tana Ber jal)', type_shape: 'Nonselective, Rectangular', size: 'Length 50-200 m, Width 5-6 m', mesh_size: '1.0-2.3 cm', cost: '80,000-1,00,000 BDT', lifespan: '4-5 years', num_fishers: '8-12', target_fish: 'Multi-fishery including seabass', fish_size_season: 'Juvenile, Sept. to Dec.'})
+CREATE (behundi_jal:FishingGear {name: 'Set bag net (Behundi jal)', type_shape: 'Nonselective, Conical', size: 'Length 12-15 m', mesh_size: '5 to 6 and 0.5 to 1.25 Nylon thread', cost: '1,00,000-1,50,000 BDT', lifespan: '4-5 years', num_fishers: '2-6', target_fish: 'Multi-fishery including seabass', fish_size_season: 'Juvenile, Sept. to Dec.'})
+CREATE (kukkuru_jal:FishingGear {name: 'Drag net (Kukkuru jal)', type_shape: 'Nonselective, Rectangular', size: 'Length 15-20 m, Width 2.0 m', mesh_size: '1.0-2.0 Nylon thread', cost: '10,000 BDT', lifespan: '3-4 years', num_fishers: '2', target_fish: 'Multi-fishery including seabass', fish_size_season: 'Juvenile, Sept. to Dec.'})
+CREATE (char_ghera_jal:FishingGear {name: 'Stake net (Char ghera jal)', type_shape: 'Nonselective, Half circle', size: 'Length 200-300 m, Width 2.5-3 m', mesh_size: '0.8-1.0 Nylon thread', cost: '50,000-60,000 BDT', lifespan: '4-5 years', num_fishers: '1-2', target_fish: 'Multi-fishery including seabass', fish_size_season: 'Adult, juvenile, Sept. to Dec.'})
+CREATE (jhaki_jal:FishingGear {name: 'Cast net (Jhaki jal)', type_shape: 'Nonselective, Conical', mesh_size: '0.6 to 1.25 Handmade Nylon thread', cost: '5000 to 10000 BDT', num_fishers: '1', target_fish: 'Multi-fishery including seabass', fish_size_season: 'Juvenile, All seasons'})
+CREATE (fenni_jal:FishingGear {name: 'Push net (Fenni jal, Thela jal)', type_shape: 'Nonselective, Triangular', mesh_size: '0.5 cm', cost: '200-1000 BDT', num_fishers: '1', target_fish: 'Multi-fishery including seabass', fish_size_season: 'Larvae, Juvenile, Monsoon'})
+CREATE (mela_barshi:FishingGear {name: 'Single hook & line (Mela Barshi)', type_shape: 'Selective, 5-8 Nos Steel hook', cost: '300-500 BDT', num_fishers: '1', target_fish: 'Asian seabass', fish_size_season: 'Adult, pre-adult, Aug.-March'})
+CREATE (long_line:FishingGear {name: 'Long line', type_shape: 'Non-selective, 5-6 Nos Steel hook', size: '2000-3000 hook', mesh_size: 'Rope made by Tire cod thread', cost: '50,000-60,000 BDT', lifespan: '4-5 years', num_fishers: '10-12', target_fish: 'Multi-fishery including seabass', fish_size_season: 'Adult, pre-adult, Sept.-March'})
+
+// Create nodes for locations and seasons
+CREATE (coxs_bazar:Location {name: 'Coxs Bazar'})
+CREATE (chattagram:Location {name: 'Chattagram'})
+CREATE (hatya:Location {name: 'Hatya'})
+CREATE (mohipur:Location {name: 'Mohipur'})
+CREATE (patuakhali:Location {name: 'Patuakhali'})
+CREATE (shatkhira:Location {name: 'Shatkhira'})
+CREATE (dry_season:Season {name: 'Dry season', months: 'November-April'})
+CREATE (wet_season:Season {name: 'Wet season', months: 'May-October'})
+CREATE (bay_of_bengal:Location {name: 'Bay of Bengal'})
+
+// Create nodes for economic aspects
+CREATE (market_price:MarketPrice {fish: 'Asian seabass', price: '700-800 BDT per kilogram'})
+
+// Create nodes for conservation issues
+CREATE (overfishing:ConservationIssue {description: 'Overfishing and habitat change due to heavy sedimentation'})
+CREATE (mesh_size_decrease:ConservationIssue {description: 'Decrease in mesh size of Koral net from 21 cm to 15 cm in Coxs Bazar area'})
+
+// Create relationships between crafts and gears
+CREATE (wooden_fishing_vessel)-[:USES_GEAR]->(koral_jal)
+CREATE (balam_boat)-[:USES_GEAR]->(koral_jal)
+CREATE (balam_boat)-[:USES_GEAR]->(long_line)
+CREATE (sampan)-[:USES_GEAR]->(koral_jal)
+CREATE (sampan)-[:USES_GEAR]->(tana_ber_jal)
+CREATE (motorized_dingi)-[:USES_GEAR]->(tana_ber_jal)
+CREATE (non_motorized_dingi)-[:USES_GEAR]->(mela_barshi)
+CREATE (non_motorized_dingi)-[:USES_GEAR]->(char_ghera_jal)
+CREATE (kosha_nauka)-[:USES_GEAR]->(mela_barshi)
+
+// Create relationships between locations and seasons
+CREATE (coxs_bazar)-[:HAS_SEASON]->(dry_season)
+CREATE (coxs_bazar)-[:HAS_SEASON]->(wet_season)
+CREATE (chattagram)-[:HAS_SEASON]->(dry_season)
+CREATE (chattagram)-[:HAS_SEASON]->(wet_season)
+CREATE (hatya)-[:HAS_SEASON]->(dry_season)
+CREATE (hatya)-[:HAS_SEASON]->(wet_season)
+CREATE (mohipur)-[:HAS_SEASON]->(dry_season)
+CREATE (mohipur)-[:HAS_SEASON]->(wet_season)
+CREATE (patuakhali)-[:HAS_SEASON]->(dry_season)
+CREATE (patuakhali)-[:HAS_SEASON]->(wet_season)
+CREATE (shatkhira)-[:HAS_SEASON]->(dry_season)
+CREATE (shatkhira)-[:HAS_SEASON]->(wet_season)
+
+// Create relationships between locations and Bay of Bengal
+CREATE (coxs_bazar)-[:PART_OF]->(bay_of_bengal)
+CREATE (chattagram)-[:PART_OF]->(bay_of_bengal)
+CREATE (hatya)-[:PART_OF]->(bay_of_bengal)
+CREATE (mohipur)-[:PART_OF]->(bay_of_bengal)
+CREATE (patuakhali)-[:PART_OF]->(bay_of_bengal)
+CREATE (shatkhira)-[:PART_OF]->(bay_of_bengal)
+
+// Create relationships between Bay of Bengal and gears
+CREATE (bay_of_bengal)-[:USES_GEAR]->(koral_jal)
+CREATE (bay_of_bengal)-[:USES_GEAR]->(tana_ber_jal)
+CREATE (bay_of_bengal)-[:USES_GEAR]->(behundi_jal)
+CREATE (bay_of_bengal)-[:USES_GEAR]->(kukkuru_jal)
+CREATE (bay_of_bengal)-[:USES_GEAR]->(char_ghera_jal)
+CREATE (bay_of_bengal)-[:USES_GEAR]->(jhaki_jal)
+CREATE (bay_of_bengal)-[:USES_GEAR]->(fenni_jal)
+CREATE (bay_of_bengal)-[:USES_GEAR]->(mela_barshi)
+CREATE (bay_of_bengal)-[:USES_GEAR]->(long_line)
+
+// Create relationships for conservation issues
+CREATE (overfishing)-[:AFFECTS]->(koral_jal)
+CREATE (overfishing)-[:AFFECTS]->(tana_ber_jal)
+CREATE (overfishing)-[:AFFECTS]->(behundi_jal)
+CREATE (overfishing)-[:AFFECTS]->(kukkuru_jal)
+CREATE (overfishing)-[:AFFECTS]->(jhaki_jal)
+CREATE (overfishing)-[:AFFECTS]->(fenni_jal)
+CREATE (overfishing)-[:AFFECTS]->(mela_barshi)
+CREATE (overfishing)-[:AFFECTS]->(long_line)
+CREATE (mesh_size_decrease)-[:AFFECTS]->(koral_jal)
