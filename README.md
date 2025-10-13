@@ -15,6 +15,7 @@ Note: Run Uvicorn server by executing "uvicorn test:app --reload" <br/>
 Neo4j Knowledge Graph (KG) showing tacit fishing knowledge obtained from interviews and open discussions with fisherfolk in Indonesia and Bangladesh
 <img width="1608" height="817" alt="image" src="https://github.com/user-attachments/assets/d87af86e-95f4-4fb3-bedd-6a99a39f9f47" />
 Paper 2: Fishing Gears and Practices in the Bukbhora Oxbow Lake: Implications for Biodiversity Conservation in South-west Bangladesh
-<img width="845" height="545" alt="image" src="https://github.com/user-attachments/assets/763dfe12-84da-4e5f-8c67-12ba1515d466" />
+<img width="1599" height="779" alt="image" src="https://github.com/user-attachments/assets/7a76d474-6d97-4282-b843-d2dc55c7aa76" />
+
 
 
